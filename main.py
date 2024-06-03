@@ -14,10 +14,11 @@ posicaoXPersona = 275
 posicaoYPersona = 236.5
 movimentoXPersona = 0
 movimentoYPersona = 0
-fonte = pygame.font.SysFont("comicsan", 14)
+fonte = pygame.font.SysFont("comicsan", 28)
 posicaoXMissel = 400
 posicaoYMissel = -240
 velocidadeMissel = 1
+pontos = 0
 missileSound = pygame.mixer.Sound("assets/missile.wav")
 pygame.mixer.Sound.play(missileSound)
 pygame.mixer.music.load("assets\ironsound.mp3")
@@ -65,14 +66,15 @@ while True:
     posicaoYMissel = posicaoYMissel + velocidadeMissel
     if posicaoYMissel > 600:
         posicaoYMissel = -240
+        pontos = pontos + 1
         velocidadeMissel = velocidadeMissel + 1
         posicaoXMissel = random .randint(0,800)
         pygame.mixer.Sound.play(missileSound)
 
     tela.blit( missel, (posicaoXMissel, posicaoYMissel))
 
-    texto = fonte.render(str(posicaoXPersona)+ "-"+str(posicaoYPersona), True, branco)
-    tela.blit(texto, (posicaoXPersona-30,posicaoYPersona-10))
+    texto = fonte.render("Pontos: "+str(pontos), True, branco)
+    tela.blit(texto, ( 10, 10))
 
     pygame.display.update()
     relogio.tick(60)
